@@ -12,10 +12,12 @@ jobs:
     with:
       stage: 'DEV'
   deploy-int:
+    needs: [deploy-dev]
     uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
     with:
       stage: 'INT'
   deploy-prd:
+    needs: [deploy-int]
     uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
     with:
       stage: 'PRD'
