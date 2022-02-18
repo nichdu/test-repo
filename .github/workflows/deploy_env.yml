@@ -1,0 +1,27 @@
+name: deploy-environment
+
+on:
+  workflow_call:
+    inputs:
+      stage:
+        required: true
+        type: string
+
+concurrency: deploy-${{ inputs.stage }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.stage }}
+    steps:
+      - name: Log environment
+        run: |
+          echo "${{ inputs.stage }}"
+      - name: sleep some time
+        run: |
+          sleep 45
+      - name: done
+        run: |
+          echo "done"
+          

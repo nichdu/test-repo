@@ -1,0 +1,21 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-dev:
+    uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
+    with:
+      stage: 'DEV'
+  deploy-int:
+    uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
+    with:
+      stage: 'INT'
+  deploy-prd:
+    uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
+    with:
+      stage: 'PRD'
