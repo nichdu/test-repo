@@ -7,6 +7,13 @@ on:
       - main
 
 jobs:
+  log-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log info
+        run: |
+          echo "name: ${{ github.event_name }}"
+          echo "event: ${{ github.event }}"
   deploy-dev:
     uses: nichdu/test-repo/.github/workflows/deploy_env.yml@main
     with:
